@@ -1,45 +1,24 @@
-import {useState, ChangeEvent} from 'react'
+import Semester from "./components/Semester"
 
-interface Sum {
-  a: string,
-  b: string
-}
 
 function App() {
-  const [userInput,setUserInput] = useState<Sum>({
-    a: "",
-    b: ""
-  })
 
-  const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setUserInput((prevInput) => ({
-      ...prevInput,
-      [name]: value,
-    }));
-  }
 
-  const getSum  = (value1: string, value2 :string) => {
-    const a = parseInt(value1)
-    const b = parseInt(value2)
 
-    if(isNaN(a) || isNaN(b)) {
-      return 0
-    } else {
-      return a + b
-    }
-
-  }
 
   return (
     <>
-    <p>{getSum(userInput.a, userInput.b)}</p>
     <div className="sem1">
-      <div className="matkul">
-        <label htmlFor="">Agama</label>
-        <input type="number" onChange={handleChange} name='a'/>
-      </div>
-      <input type="number" onChange={handleChange} name='b'/>
+      <Semester semester={1} matakuliah={['Algoritma dan Pemrograman', 'Kalkulus 1', 'Matematika Diskrit', 'Teknologi Informasi']}/>
+    </div>
+    <div className="sem2">
+      <Semester semester={2} matakuliah={['Pemrograman Dasar', 'Kalkulus 2', 'Sistem Basis Data', 'Sistem Digital', 'Sistem Operasi']}/>
+    </div>
+    <div className="sem3">
+      <Semester semester={3} matakuliah={['Pemrograman Web', 'Sistem Informasi', 'Sistem Basis Data Lanjut', 'Sistem Berkas', 'Organisasi dan Arsitektur Komputer', 'Probabilitas dan Statistika', 'Komunikasi Data', 'Interaksi Manusia dan Komputer']}/>
+    </div>
+    <div className="sem4">
+      <Semester semester={4} matakuliah={['Metode Numerik', 'Struktur Data', 'Jaringan Komputer', 'Analisis dan Perancangan Sistem', 'Rekayasa Perangkat Lunak', 'Kecerdasan Buatan', 'Teori Graf dan Automata']}/>
     </div>
     </>
   )
