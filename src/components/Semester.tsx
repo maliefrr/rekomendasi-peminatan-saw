@@ -8,6 +8,15 @@ interface SemesterProps {
 }
 
 const Semester: React.FC<SemesterProps> = ({ semester, matakuliah, nilai, onNilaiChange }) => {
+  // Define grade-to-weight mapping
+  const gradeToWeight: { [grade: string]: number } = {
+    A: 4,
+    B: 3,
+    C: 2,
+    D: 1,
+    E: 0,
+  };
+
   return (
     <>
       <h1>Semester {semester}</h1>
@@ -23,12 +32,18 @@ const Semester: React.FC<SemesterProps> = ({ semester, matakuliah, nilai, onNila
             <tr key={index}>
               <td>{matkul}</td>
               <td>
-                <input
-                  type='text'
-                  placeholder={`Nilai Huruf ${matkul}`}
+                <select
                   value={nilai[matkul] || ''} // Use default empty string if grade is not available
                   onChange={(e) => onNilaiChange(matkul, e.target.value)}
-                />
+                >
+                  <option value="">-- Select Grade --</option>
+                  {/* Map the grade options to corresponding weights */}
+                  {Object.entries(gradeToWeight).map(([grade]) => (
+                    <option key={grade} value={grade}>
+                      {grade}
+                    </option>
+                  ))}
+                </select>
               </td>
             </tr>
           ))}
