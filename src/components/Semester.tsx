@@ -20,11 +20,11 @@ const Semester: React.FC<SemesterProps> = ({ semester, matakuliah, nilai, onNila
   return (
     <>
       <h1>Semester {semester}</h1>
-      <table>
+      <table className='table table-hover'>
         <thead>
           <tr>
-            <th>Matakuliah</th>
-            <th>Nilai Huruf</th>
+            <th scope='col'>Matakuliah</th>
+            <th scope='col'>Nilai Huruf</th>
           </tr>
         </thead>
         <tbody>
@@ -35,8 +35,9 @@ const Semester: React.FC<SemesterProps> = ({ semester, matakuliah, nilai, onNila
                 <select
                   value={nilai[matkul] || ''} // Use default empty string if grade is not available
                   onChange={(e) => onNilaiChange(matkul, e.target.value)}
+                  className='form-select'
                 >
-                  <option value="">-- Select Grade --</option>
+                  <option value="">-- Nilai Huruf --</option>
                   {/* Map the grade options to corresponding weights */}
                   {Object.entries(gradeToWeight).map(([grade]) => (
                     <option key={grade} value={grade}>

@@ -1,4 +1,5 @@
 import NilaiMatkul from './components/NilaiMatkul';
+import './css/style.css'
 
 function App() {
   const daftarMatkul = [
@@ -22,7 +23,13 @@ function App() {
 
   return (
     <>
-      <NilaiMatkul dataMatkul={daftarMatkul} />
+      <div className="container mt-5">
+        <div className="judul mb-3">
+          <h1>Sistem Pendukung Keputusan</h1>
+          <h2>Peminatan Jurusan Teknik Informatika UHO</h2>
+        </div>
+        <NilaiMatkul dataMatkul={daftarMatkul} />
+      </div>
     </>
   );
 }

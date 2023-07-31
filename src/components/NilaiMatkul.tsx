@@ -68,7 +68,7 @@ const NilaiMatkul: React.FC<dataMatkulProps> = ({ dataMatkul }) => {
         </div>
       ))}
 
-      <h2>Rekomendasi Peminatan: {recommendedSpecialty || 'RPL / KCV / KBJ'}</h2>
+      <h2 className='mt-4 mb-3'>Rekomendasi Peminatan: {recommendedSpecialty || 'RPL / KCV / KBJ'}</h2>
     </>
   );
 };
