@@ -1,7 +1,11 @@
+import { useRef} from 'react';
+// import html2canvas from 'html2canvas';
+// import jsPDF from 'jspdf';
 import NilaiMatkul from './components/NilaiMatkul';
 import './css/style.css'
 
 function App() {
+  const containerRef = useRef(null);
   const daftarMatkul = [
     {
       semester: 1,
@@ -21,6 +25,8 @@ function App() {
     },
   ];
 
+
+
   return (
     <>
       <div className="container mt-5">
@@ -28,7 +34,13 @@ function App() {
           <h1>Sistem Pendukung Keputusan</h1>
           <h2>Peminatan Jurusan Teknik Informatika UHO</h2>
         </div>
-        <NilaiMatkul dataMatkul={daftarMatkul} />
+        <div className="renderedPDF" ref={containerRef}>
+          <div>
+          </div>
+          <NilaiMatkul
+            dataMatkul={daftarMatkul}
+          />
+        </div>
       </div>
     </>
   );

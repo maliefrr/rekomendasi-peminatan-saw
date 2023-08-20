@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Semester from './Semester';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import GeneratedPdf from './GeneratedPdf';
 
 interface dataMatkulProps {
   dataMatkul: {
@@ -14,6 +16,10 @@ const NilaiMatkul: React.FC<dataMatkulProps> = ({ dataMatkul }) => {
   const handleNilaiChange = (matkul: string, nilai: string) => {
     setNilai((nilaiSebelum) => ({ ...nilaiSebelum, [matkul]: nilai }));
   };
+
+    const [name,setName] = useState({
+      name : ""
+    })
 
   const peminatan = {
     RPL: ['Algoritma dan Pemrograman', 'Pemrograman Dasar', 'Pemrograman Web', 'Sistem Basis Data', 'Sistem Basis Data Lanjut', 'Analisis dan Perancangan Sistem', 'Sistem Informasi'],
@@ -58,10 +64,41 @@ const NilaiMatkul: React.FC<dataMatkulProps> = ({ dataMatkul }) => {
   // Join the matching specialties with " / "
   const recommendedSpecialty = matchingSpecialties.join(' / ');
 
-  console.log(recommendedSpecialty);
-  console.log(scores);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+
+  const generatePDF = () => {
+    const pdfData = {
+      matkul: dataMatkul,
+      nilai: nilai,
+      recomendedSpeciality: recommendedSpecialty,
+      nama : name.name
+    };
+
+    return (
+      <PDFDownloadLink document={<GeneratedPdf {...pdfData} />} fileName="hasil_rekomendasi.pdf">
+        {({loading}) =>
+          loading ? <button className='btn btn-primary mt-5 mb-5'>Generating PDF...</button> : <button className='btn btn-primary mt-5 mb-5'>Download Hasil Rekomendasi</button>
+        }
+      </PDFDownloadLink>
+    );
+  };
+ 
+  
+
+
+  // console.log(recommendedSpecialty);
+  // console.log(scores);
+  // console.log(nilai)
+  // console.log(dataMatkul)
   return (
     <>
+      <input type="text" placeholder='Input Nama' className='form-control mb-3' value={name.name} onChange={onChange} name="name" />
       {dataMatkul.map(({ semester, matkul }, index) => (
         <div key={index}>
           <Semester semester={semester} matakuliah={matkul} nilai={nilai} onNilaiChange={handleNilaiChange} />
@@ -69,6 +106,8 @@ const NilaiMatkul: React.FC<dataMatkulProps> = ({ dataMatkul }) => {
       ))}
 
       <h2 className='mt-4 mb-3'>Rekomendasi Peminatan: {recommendedSpecialty || 'RPL / KCV / KBJ'}</h2>
+
+      {generatePDF()}
     </>
   );
 };
