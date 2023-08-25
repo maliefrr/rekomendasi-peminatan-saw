@@ -11,6 +11,8 @@ interface PdfData {
   };
   recomendedSpeciality: string;
   nama : string;
+  nim : string;
+  peminatan : string;
 }
 
 const styles = StyleSheet.create({
@@ -39,14 +41,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     fontWeight: 'bold',
   },
+  mb3 : {
+    marginBottom: 16
+  }
 });
 
-const GeneratedPdf: React.FC<PdfData> = ({ matkul, nilai, recomendedSpeciality, nama }) => {
+const GeneratedPdf: React.FC<PdfData> = ({ matkul, nilai, recomendedSpeciality, nama, nim, peminatan }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View>
-          <Text>Nama: {nama}</Text>
+          <Text style={styles.mb3}>Nama: {nama}</Text>
+          <Text style={styles.mb3}>NIM: {nim}</Text>
+          <Text style={styles.mb3}>Peminatan yang diminati: {peminatan}</Text>
           <View style={styles.table}>
             <View style={[styles.row, styles.headerCell]}>
               <Text style={styles.cell}>Mata Kuliah</Text>
