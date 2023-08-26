@@ -1,0 +1,25 @@
+body {
+  background: rgb(0,7,111);
+background: -moz-linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
+background: -webkit-linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
+background: linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00076f",endColorstr="#458fb0",GradientType=1);
+}
+.main-content {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 3em;
+  transition: background-color 0.5s, box-shadow 
+}
+
+.title {
+  text-align: center;
+  color: antiquewhite;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}

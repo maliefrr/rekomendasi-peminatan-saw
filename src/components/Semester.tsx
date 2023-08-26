@@ -19,19 +19,10 @@ const Semester: React.FC<SemesterProps> = ({ semester, matakuliah, nilai, onNila
 
   return (
     <>
-      <h1>Semester {semester}</h1>
-      <table className='table table-hover'>
-        <thead>
-          <tr>
-            <th scope='col'>Matakuliah</th>
-            <th scope='col'>Nilai Huruf</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matakuliah.map((matkul, index) => (
-            <tr key={index}>
-              <td>{matkul}</td>
-              <td>
+      <h1 className='title'>Semester {semester}</h1>
+          {matakuliah.map((matkul) => (
+            <div className="mb-3">
+                <label className='form-label'>{matkul}</label>
                 <select
                   value={nilai[matkul] || ''} // Use default empty string if grade is not available
                   onChange={(e) => onNilaiChange(matkul, e.target.value)}
@@ -45,11 +36,8 @@ const Semester: React.FC<SemesterProps> = ({ semester, matakuliah, nilai, onNila
                     </option>
                   ))}
                 </select>
-              </td>
-            </tr>
+            </div>
           ))}
-        </tbody>
-      </table>
     </>
   );
 };

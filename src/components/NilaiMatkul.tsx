@@ -73,7 +73,7 @@ const NilaiMatkul: React.FC<dataMatkulProps> = ({ dataMatkul }) => {
     const totalWeightedValue = courses.reduce((sum, course) => sum + (weightedValues[course] || 0), 0);
     scores[peminatanName] = totalWeightedValue;
   });
-  userInput.status === "pribadi" ? scores[userInput.peminatan] += 4 : userInput.status === "teman" ? scores[userInput.peminatan] += 2 : scores[userInput.peminatan] += 0
+  userInput.status === "pribadi" ? scores[userInput.peminatan] += 4 : userInput.status === "dosen" ? scores[userInput.peminatan] += 3 : userInput.status === "teman" ? scores[userInput.peminatan] += 2 : userInput.status === "tidak" ? scores[userInput.peminatan] += 1 : scores[userInput.peminatan] += 0
 
   const highestScore = Math.max(...Object.values(scores));
 
@@ -128,8 +128,18 @@ console.log(calculateScore())
 
   return (
     <>
-      <input type="text" placeholder='Input Nama' className='form-control mb-3' value={userInput.name} onChange={onChange} name="name" />
-      <input type="text" placeholder='Input Nomor Induk Mahasiswa' className='form-control mb-3' value={userInput.nim} onChange={onChange} name="nim" />
+    <div className="main-content">
+        <h1 className='mb-5 title'>Sistem Pendukung Keputusan Peminatan Jurusan Teknik Informatika UHO</h1>
+      <div className="nama">
+        <label htmlFor="nama" className="form-label">Nama Lengkap</label>
+        <input type="text" placeholder='Input Nama' className='form-control mb-3' value={userInput.name} onChange={onChange} name="name" id='nama'/>
+      </div>
+      <div className="nim">
+        <label htmlFor="nim" className="form-label">Nomor Induk Mahasiswa</label>
+      <input type="text" placeholder='Input Nomor Induk Mahasiswa' className='form-control mb-3' value={userInput.nim} onChange={onChange} name="nim" id='nim'/>
+      </div>
+      <div className="peminatan">
+        <label htmlFor="peminatan" className="form-label">Peminatan</label>
       <select
           value={userInput.peminatan} // Use default empty string if grade is not available
           onChange={handlePeminatanChange}
@@ -140,6 +150,9 @@ console.log(calculateScore())
           <option value="KBJ">KBJ</option>
           <option value="RPL">RPL</option>          
         </select>
+      </div>
+      <div className="status">
+        <label htmlFor="status" className="form-label">Status Peminatan</label>
       <select
           value={userInput.status} // Use default empty string if grade is not available
           onChange={handleStatusChange}
@@ -147,9 +160,11 @@ console.log(calculateScore())
        >
           <option value="">-- Status Peminatan Mahasiswa --</option>                  
           <option value="pribadi">Minat Pribadi</option>
+          <option value="dosen">Saran Dosen</option>
           <option value="teman">Ikut Teman</option>
           <option value="tidak">Tidak Berminat</option>          
         </select>
+      </div>
       {dataMatkul.map(({ semester, matkul }, index) => (
         <div key={index}>
           <Semester semester={semester} matakuliah={matkul} nilai={nilai} onNilaiChange={handleNilaiChange} />
@@ -162,7 +177,10 @@ console.log(calculateScore())
           : `Kamu kurang cocok untuk peminatan ini. Rekomendasi peminatan : ${recommendedSpecialty}`}
       </h2>
 
-      {generatePDF()}
+      <div className="button-container">
+        {generatePDF()}
+      </div>
+      </div>
     </>
   );
 };
