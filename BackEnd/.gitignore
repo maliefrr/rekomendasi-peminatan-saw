@@ -1,0 +1,30 @@
+# Visual Studio Code specific files
+.vscode/
+.settings.json
+.code-workspace
+
+# Ignore user-specific settings files
+.settings/
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore Visual Studio Code workspace settings
+/.vscode/settings.json
+
+# Ignore debugging files
+launch.json
+.vscodeignore
+
+# Ignore npm-debug.log file
+npm-debug.log
+
+# Ignore any local development settings
+local.settings.json
+
+# Ignore yarn lock file if you're using Yarn
+yarn.lock
+
+node_modules
+
+package-lock.json
