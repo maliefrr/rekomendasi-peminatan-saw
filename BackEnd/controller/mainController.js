@@ -1,10 +1,10 @@
-const dataMahasiswa = require("../models/dataMahasiswa")
+const {DataMahasiswa} = require("../models")
 
 
 
 const getDataMahasiswa = async (req,res) => {
     try {
-        const data = await dataMahasiswa.findAll()
+        const data = await DataMahasiswa.findAll()
         res.status(200).json({
             statusCode : 200,
             data

@@ -16,14 +16,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DataMahasiswa.init({
-    nama: DataTypes.STRING,
-    alamat: DataTypes.STRING,
-    tgl_lahir: DataTypes.DATE,
-    tempat_lahir: DataTypes.STRING,
-    pendidikan_terakhir: DataTypes.STRING,
-    skills: DataTypes.STRING,
-    no_telp: DataTypes.STRING,
-    email: DataTypes.STRING
+    nama_mahasiswa: DataTypes.STRING,
+    nim: DataTypes.STRING,
+    peminatan: DataTypes.STRING,
+    status_peminatan: DataTypes.STRING,
+    ipk_sem_1: DataTypes.FLOAT,
+    ipk_sem_2: DataTypes.FLOAT,
+    ipk_sem_3: DataTypes.FLOAT,
+    ipk_sem_4: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'DataMahasiswa',
