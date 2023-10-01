@@ -2,6 +2,8 @@
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import DashboardAdmin from './Pages/DashboardAdmin';
+import AddMahasiswa from './Pages/AddMahasiswa';
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login />}/>
           <Route path='/' element={<Dashboard />}/>
+          <Route path='/admin/dashboard' element={<DashboardAdmin/>}/>
+          <Route path='/add/mahasiswa' element={<AddMahasiswa/>}/>
         </Routes>
       </Router>
       {/* <div className="container mt-5">
