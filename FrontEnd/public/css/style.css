@@ -1,9 +1,9 @@
 body {
   background: rgb(0,7,111);
-background: -moz-linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
-background: -webkit-linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
-background: linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00076f",endColorstr="#458fb0",GradientType=1);
+  background: -moz-linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
+  background: -webkit-linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
+  background: linear-gradient(74deg, rgba(0,7,111,1) 0%, rgba(69,143,176,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00076f",endColorstr="#458fb0",GradientType=1);
 }
 .main-content {
   background-color: rgba(255, 255, 255, 0.2);
@@ -22,4 +22,38 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00076f",endCo
   display: flex;
   justify-content: center;
   margin-top: 1em;
+}
+
+.login-card {
+  background-color: rgba(36, 159, 216, 0.2);
+}
+
+.btn-login {
+  transition: all 0.5s;
+}
+
+.btn-login:hover {
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  color: black;
+}
+
+.search-icon {
+    background-image: url('../assets/search-icon.png'); /* Replace with the path to your search icon image */
+    background-size: 20px; /* Adjust the size of the icon as needed */
+    background-position: right 10px center; /* Adjust the positioning of the icon */
+    background-repeat: no-repeat;
+    padding-right: 30px; /* Add padding to the right to make space for the icon */
+}
+
+.download-icon {
+    background-image: url('../assets/download-icon.png'); /* Replace with the path to your search icon image */
+    background-size: 30px; /* Adjust the size of the icon as needed */
+    background-position:center; /* Adjust the positioning of the icon */
+    background-repeat: no-repeat;
+    padding-right: 30px; /* Add padding to the right to make space for the icon */
+}
+
+table {
+  text-align: center;
 }

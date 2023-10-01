@@ -10,8 +10,10 @@ const getDataMahasiswa = async (req,res) => {
             data
         })
     } catch (error) {
-        res.status(500).json({data : error})        
+        res.status(500).json({data : error})
     }
 }
+
+
 
 module.exports = { getDataMahasiswa}
